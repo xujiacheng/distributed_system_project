@@ -12,7 +12,7 @@ public class serializable implements Serializable{
 								// wins: how many times one have won
 	//game record 
 	
-	public serializable(String name, int port, String ip)
+	public serializable(int room, String name, int port, String ip, String id)
 	{
 		this.type = null;
 		this.name = name;
@@ -21,37 +21,46 @@ public class serializable implements Serializable{
 		this.msg = null;
 		this.diceFaces = new int[] {0,0,0,0,0};
 		this.bid = null;
-		this.id = -1;
-		this.wins = 0;
+		this.id = id;
+		this.room = room;
 	}
 
-	public void typeone(int[] bid){       //make bids
+	public void bids(int[] bid){       //type1: make bids
 		this.type = 1;
 		this.bid = bid;
 	}
 
-	public void typetwo(){            //challenge
+	public void challenge(){            //type2: challenge
 		this.type = 2;
 	}
 	
-	public void typethree(int[] diceFaces){
+	public void hands(int[] diceFaces){     //type3: reveal hands
+		this.type = 3;
 		this.diceFaces = diceFaces;
 	}
-	//setters 
-	//public void setIP(String ip) { this.ip = ip;}
-	//public void setMsg(String msg) { this.msg = msg;}
-	//public void setBid(int[] bid) { this.bid = bid;}
-	//public void win() { this.wins++;}
-	
+
+	public void join(){     //type4: request to join game
+		this.type = 4;
+	}
+
+	public void quit(){     //type5: request to quit room
+		this.type = 5;
+	}
+
+	public void chat(String msg){
+		this.msg = msg;
+	}
+
 	
 	//getters 
+	public int getRoom() { return this.room; }
+	public int getType() { return this.type; }
 	public String getIP() { return this.ip;}
 	public String getName() {return this.name;}
 	public int getID() { return this.id; }
 	public String getMsg() { return this.msg;}
 	public int[] getBid() { return this.bid;}	//bid[#, diceface]
 	public int[] getDices() { return this.diceFaces;}
-	public int getWins() { return this.wins;}
 	
 	
 
