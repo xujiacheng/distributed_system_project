@@ -1,0 +1,2 @@
+1: our design allows maximum five peers in one chat room
+2: our design doesn't allow peer sending message to itself
